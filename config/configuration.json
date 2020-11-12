@@ -3,9 +3,9 @@
     "beacon_interval": 10.0,
     "listener": {
         "implementation": "pypacket.implementations.rtl_listener.RtlListener",
-        "frequency": "144390000",
+        "frequency": "144800000",
         "gain": "49.6",
-        "ppm_error": "0",
+        "ppm_error": "3",
         "squelch_level": "0",
         "sample_rate": "22050"
     },
@@ -14,7 +14,7 @@
     },
     "beacon": {
         "interval": 10.0,
-        "comment": "Powered by",
+        "comment": "Powered by the Dark Forces of Azeroth",
         "symbol_table": "I",
         "symbol": "&"
     },
@@ -26,7 +26,7 @@
         {
             "name": "aprs-is",
             "implementation": "pypacket.implementations.aprs_is_processor.AprsIsProcessor",
-            "host": "second.aprs.net"
+            "host": "asia.aprs2.net"
         }
     ]
 }
