@@ -5,18 +5,19 @@ import aiohttp
 
 import pyfronius
 
+def solar():
+    async def main(loop, host):
+        timeout = aiohttp.ClientTimeout(total=10)
+        async with aiohttp.ClientSession(loop=loop, timeout=timeout) as session:
+            fronius = pyfronius.Fronius(session, host)
 
-async def main(loop, host):
-    timeout = aiohttp.ClientTimeout(total=10)
-    async with aiohttp.ClientSession(loop=loop, timeout=timeout) as session:
-        fronius = pyfronius.Fronius(session, host)
-
-        res = await fronius.fetch(loop=loop)
-        for r in res:
-            print(r)
+            res = await fronius.fetch(loop=loop)
+            for r in res:
+                print(r)
 
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.DEBUG)
     loop = asyncio.get_event_loop()
     loop.run_until_complete(main(loop, "http://192.168.10.181"))
+    solar()
