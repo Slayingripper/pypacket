@@ -1,4 +1,3 @@
-import sysusage
 from solarpanels import solar
 from wakemeup import wakemeup
 from sysusage import callback
