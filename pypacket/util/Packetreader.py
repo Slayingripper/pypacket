@@ -3,8 +3,9 @@ from solarpanels import solar
 from wakemeup import wakemeup
 from sysusage import callback
 from callsign import getinfo
+from otp import otpcheck
 def packetexecute(packetstring):
-    
+   
     if '#1010#' in packetstring:
         print("Packet found")
         callback()
@@ -17,10 +18,6 @@ def packetexecute(packetstring):
     elif '#73#' in packetstring:
       #  packetstring = packetstring.split('!')
         newpacket = packetstring[packetstring.find("(")+1 : packetstring.find(")")]
-        getinfo(newpacket)
-            
-    
-
-    
+        getinfo(newpacket)    
 if __name__ == "__main__":
     packetexecute("")
